@@ -1,3 +1,6 @@
+<p align="center"><img src="assets/banner.svg" alt="claude-skills-public — Varela Insights" width="100%"></p>
+<p align="center">![Skills](https://img.shields.io/badge/skills-11%20razonamiento-0a0e1a?style=flat-square) ![MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square) [![Varela Insights](https://img.shields.io/badge/by-Varela%20Insights-6aa0ff?style=flat-square)](https://www.varelainsights.com/)</p>
+
 # claude-skills-public
 
 Skills de razonamiento para **Claude Code** (CLI de Anthropic) — metodologías reutilizables basadas en frameworks públicos (Lean, falsación Popperiana, ISO/IEC 42001, Pareto, CPMAI).
