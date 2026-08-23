@@ -74,6 +74,18 @@ Antes de escribir nada, reúne y confirma con el usuario lo mínimo:
    el manual ("no verificado en vivo, último estado conocido <fecha>"). Nunca
    escribas "funcionó" sin evidencia.
 
+6. **Provoca al verificador antes de citarlo.** Evidencia verbatim de un verificador roto
+   es **peor** que no tener evidencia: la escribes en tres manuales con toda la autoridad
+   del output literal. Antes de citar un check/test/health/escáner, pregunta **"¿lo he
+   visto dar negativo alguna vez?"**. Si no, fabrica el caso malo y comprueba que grita.
+   Caso 2026-08-23: `anon leak` imprimió `✔ Sin fuga aparente` **con la fuga en pantalla
+   dos líneas arriba** — comparaba `"AS265594"` contra `"AS265594 Television Internacional
+   S.A. de C.V."`, así que la rama de alarma era **código muerto** y el test era
+   estructuralmente incapaz de dar positivo. Iba a quedar documentado como "verificado".
+   Reproducir la comparación con `printf` y valores reales cuesta 30 segundos.
+   **Si el output se contradice a sí mismo —un dato en pantalla que niega el veredicto de
+   abajo— el sospechoso es el veredicto, no el dato.**
+
 > Si una cifra viene de otro agente, re-valídala en vivo antes de escribirla
 > (no confíes en cifras heredadas sin re-verificación).
 
