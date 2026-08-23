@@ -1,6 +1,17 @@
 ---
 name: premortem
-description: Use BEFORE building, shipping, deploying, or letting an agent run autonomously — when you're about to commit to a plan and want to surface how it fails BEFORE it fails. Triggers on "premortem", "qué puede salir mal", "análisis de riesgo antes de", "antes de lanzar/desplegar esto", "si esto fracasa por qué sería", or any moment you're about to vibecode/automate something whose failure would be silent, costly, or hard to undo (deploy a prod, dar autonomía a un agente, correr algo destructivo, soltar un build de IA). The trap it catches: jumping from plan to execution without imagining the failure first — and, specifically for vibecoding, leaving a deterministic failure (dep alucinada, secreto, 4xx silencioso) to "model discipline" instead of a hard gate. NOT for killing a present claim (that's /refutar) nor verifying current technical assumptions (that's /pre-flight) — premortem is about FUTURE failure of something you haven't shipped yet.
+description: >-
+  Use BEFORE building, shipping, deploying, or letting an agent run autonomously — when
+  you're about to commit to a plan and want to surface how it fails BEFORE it fails.
+  Triggers on "premortem", "qué puede salir mal", "análisis de riesgo antes de", "antes de
+  lanzar/desplegar esto", "si esto fracasa por qué sería", or any moment you're about to
+  vibecode/automate something whose failure would be silent, costly, or hard to undo (deploy
+  a prod, dar autonomía a un agente, correr algo destructivo, soltar un build de IA). The
+  trap it catches: jumping from plan to execution without imagining the failure first — and,
+  specifically for vibecoding, leaving a deterministic failure (dep alucinada, secreto, 4xx
+  silencioso) to "model discipline" instead of a hard gate. NOT for killing a present claim
+  (that's /refutar) nor verifying current technical assumptions (that's /pre-flight) —
+  premortem is about FUTURE failure of something you haven't shipped yet.
 ---
 
 # Premortem — fracaso prospectivo para vibecoding

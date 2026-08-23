@@ -1,6 +1,12 @@
 ---
 name: refutar
-description: Use when about to accept, build on, plan on top of, or report a claim — especially an empirical assertion ("X% de…", "N casos", "tardó Z días"), a figure from an agent/forensics/report, a "ya funciona / está listo / está live", or when asked "¿es cierto?" / "verifica esto". Triggers when a stated number or "it works" is the PREMISE of the work you're about to do. The trap it catches: inheriting the claim and appending a verification caveat at the end instead of refuting it first.
+description: >-
+  Use when about to accept, build on, plan on top of, or report a claim — especially an
+  empirical assertion ("X% de…", "N casos", "tardó Z días"), a figure from an
+  agent/forensics/report, a "ya funciona / está listo / está live", or when asked "¿es
+  cierto?" / "verifica esto". Triggers when a stated number or "it works" is the PREMISE of
+  the work you're about to do. The trap it catches: inheriting the claim and appending a
+  verification caveat at the end instead of refuting it first.
 ---
 
 # Refutar — falsación popperiana operacional

@@ -2,9 +2,10 @@
 name: anti-hype-acronyms-guard
 description: "PRE-DELIVERY gate obligatorio: revisa todo PDF/propuesta/email cliente por acrónimos sin métricas medibles, claims de liderazgo sin evidencia, y acumulación de siglas (Mueller alert: 5+ acrónimos seguidos = spam signal). Emite PASS / WARN (con counter-propuesta) / FAIL (con correcciones específicas). Se invoca AUTOMÁTICAMENTE antes de cualquier entrega de propuesta o PDF de auditoría a cliente. Contiene regex Python ejecutables."
 user-invocable: true
-auto-invoke: "ANTES de renderizar un PDF de auditoría para cliente; ANTES de enviar propuesta por WA o email; ANTES de generar cualquier reporte visible al cliente"
-proposed-by: Basado en Mueller alert (Google, agosto 2025)
-priority: P0
+metadata:
+  auto-invoke: "ANTES de renderizar un PDF de auditoría para cliente; ANTES de enviar propuesta por WA o email; ANTES de generar cualquier reporte visible al cliente"
+  proposed-by: "Basado en Mueller alert (Google, agosto 2025)"
+  priority: "P0"
 ---
 
 # Anti-Hype Acronyms Guard — Mueller Alert Prevention

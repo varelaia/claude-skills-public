@@ -10,6 +10,12 @@ mkdir -p "$DEST"
 
 install_one() {
   local name="$1"
+  # Sin esta guarda, un nombre vacio hace que [ -d "${SRC}/" ] sea verdadero
+  # y el rm -rf de abajo borre TODO ${DEST}.
+  [ -n "$name" ] || { echo "nombre vacio" >&2; return 1; }
+  case "$name" in
+    */* | .* ) echo "nombre invalido: ${name}" >&2; return 1 ;;
+  esac
   if [ -d "${SRC}/${name}" ]; then
     rm -rf "${DEST}/${name}"; cp -r "${SRC}/${name}" "${DEST}/${name}"; echo "instalada: ${name}/"
   elif [ -f "${SRC}/${name}.md" ]; then
