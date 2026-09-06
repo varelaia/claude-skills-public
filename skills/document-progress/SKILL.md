@@ -86,6 +86,20 @@ Antes de escribir nada, reúne y confirma con el usuario lo mínimo:
    **Si el output se contradice a sí mismo —un dato en pantalla que niega el veredicto de
    abajo— el sospechoso es el veredicto, no el dato.**
 
+7. **El caso INVERSO: el verificador que grita fallo con el sistema sano.** El Paso 0.6
+   cubre el falso VERDE; el falso ROJO cuesta igual y es más fácil de creerse (un ❌ se
+   ve honesto). Caso 2026-08-27 (ONION_CLIENT_AUTH_ROTACION): el test E2E de mi propio
+   script reportó `HTTP 000 ×3 → ❌ sigue sin entrar` con la llave correcta **ya
+   instalada y funcionando**. Causa: hacía `systemctl restart tor; sleep 8` y medía. Un
+   tor recién reiniciado no tiene el descriptor del onion en caché; el timeout es la
+   norma, no el fallo. **El test midió contra el reloj en vez de contra el log** — y era
+   la misma trampa que yo había diagnosticado 20 minutos antes.
+   Regla: **un verificador que espera con `sleep` fijo tras reiniciar un servicio está
+   midiendo latencia de arranque, no salud.** Espera por SEÑAL (`until grep -q <marca>
+   "$log"; do sleep 2; done`), y que el veredicto sea la señal del log, no el código de
+   salida del primer intento. Antes de escribir un ❌ en tres manuales, pregunta:
+   *¿le di al sistema el tiempo que necesita, o solo el que asumí?*
+
 > Si una cifra viene de otro agente, re-valídala en vivo antes de escribirla
 > (no confíes en cifras heredadas sin re-verificación).
 
