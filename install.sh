@@ -10,6 +10,10 @@ mkdir -p "$DEST"
 
 install_one() {
   local name="$1"
+  # guarda: nombre vacío o con '/' o '.' inicial podía escapar del DEST y borrar de más
+  if [ -z "$name" ] || [[ "$name" == */* || "$name" == .* ]]; then
+    echo "nombre inválido: '${name}'" >&2; return 1
+  fi
   if [ -d "${SRC}/${name}" ]; then
     rm -rf "${DEST}/${name}"; cp -r "${SRC}/${name}" "${DEST}/${name}"; echo "instalada: ${name}/"
   elif [ -f "${SRC}/${name}.md" ]; then
