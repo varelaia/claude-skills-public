@@ -31,6 +31,7 @@ NUNCA sustituyas el entregable que el usuario pidió por tu propio reframe cuand
 | De sistema ("funciona / está live / está listo") | el comando E2E que daría no-2xx: booking real→DB, mensaje real por el canal, `curl` de la ruta exacta |
 | De agente / reporte (cifra que otro agente afirmó) | pedir la query+output verbatim+timestamp y **re-ejecutarla** (no leer su resumen) — §7 |
 | De fuente / dato factual ("el estudio dice…") | ir a la fuente primaria y buscar el dato que la contradice; ¿correlación presentada como causa? |
+| De resumen de búsqueda/herramienta (claims de un LLM que resume resultados) | el resumen NO es la fuente: abrir las citas incluidas y buscar la que lo contradice — los resúmenes pueden **invertir sus propias fuentes** (caso 2026-09-07: 2× "la MINI+ no tiene Ethernet" citando hilos que describían su Ethernet; ganó la observación física del usuario) |
 | Causal ("X mejoró por Y") | buscar el **confound**: ¿qué otra cosa cambió a la vez? comparar a igual carga / día-sobre-día |
 | Juicio de valor / diseño / negocio ("outbound > inbound", "se ve mejor") | **NO-FALSABLE** → no es trabajo del refutador. Decláralo y devuelve el claim. No inventes una refutación empírica de algo que no es empírico. |
 
@@ -80,6 +81,7 @@ Nada de un bloque plano `CAMPO: valor`. El veredicto va PRIMERO (es el bottom li
 - Citaste la cifra de otro agente sin re-ejecutar su query (cascada §7)
 - Tratas de "refutar" un juicio de valor en vez de marcarlo NO-FALSABLE
 - Buscaste evidencia que CONFIRMA en vez del comando que REFUTA
+- Citaste un archivo que **vive junto a la fuente** y la parece, sin comprobar que ES la fuente (resúmenes, guías de estudio, notas generadas)
 
 ## Rationalizaciones (de baselines reales)
 | Excusa | Realidad |
@@ -92,3 +94,4 @@ Nada de un bloque plano `CAMPO: valor`. El veredicto va PRIMERO (es el bottom li
 | "Me pidieron construir, no verificar" | Construir sobre un claim ES aceptarlo. La petición de construir no exime de refutarlo primero. |
 | "El regex/grep da 0 ocurrencias del tic, ya quedó arreglado" | Un keyword-check solo ve el patrón de AYER. Si el sistema (un LLM, un generador) puede mutar a un molde nuevo, tu detector quedará ciego a él y dará 0 falso. Caso real (cicleo de cierre en un bot): maté "Quedamos…"→creció "Me quedo con…"→lo maté→creció "abre-con-número 6/6" que el regex no buscaba. Para "¿ya no se cicla / converge?" mide la **convergencia NUEVA** (diversidad estructural, oído humano, juez-LLM de similitud), no la ausencia de la frase vieja. |
 | "La métrica subió/bajó N vs ayer (reporte de tendencia)" | **Discontinuidad de medición.** ¿Cambió el CÓDIGO de la métrica entre los dos puntos? Un fix de una métrica inflada produce un delta día-sobre-día FALSO de una sola vez (el "ayer" se midió con método viejo, el "hoy" con método nuevo). Caso real: reporte diario "Citación 9 (-26 vs ayer)" = el 35 de ayer era pre-fix (crudo + bot mal clasificado), el 9 de hoy post-fix (deduplicado) → citación REAL plana en baseline. Antes de reaccionar al delta: `git log` de la métrica + re-contar AMBOS días con el MISMO método (log vivo) + comparar contra baseline. |
+| "Lo saqué del material del curso / de la documentación oficial" | **¿Es fuente primaria o un derivado que la parece?** Los resúmenes, guías de estudio y notas generadas viven en la MISMA carpeta que el original, se llaman igual y leen con autoridad — pero traen datos que el original no tiene. Caso real (CPMAI, 2026-09-12): la cifra "ImageNet tenía 5.8 % de etiquetas erróneas", marcada como material oficial, solo existía en un `STUDY_GUIDE` **generado** en dic-2025; `grep` sobre las 19 lecciones y el workbook = 0 coincidencias. Iba a circular en un entregable de cliente con el respaldo de una certificación. **Antes de citar: grep de la frase contra el original, no contra la carpeta.** Si solo aparece en el derivado, no es cita — es rumor con buena letra. |
