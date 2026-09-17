@@ -51,8 +51,22 @@ evidencia dura (Paso 0.4) PRIMERO y mira **qué cambió en disco**:
   (refutar+premortem mataron todo lo propuesto) — forzar Trinity habría sido la basura que el
   hilo entero combatió. Right-size = memory + puntero + (si reveló gotcha) patch de skill + marker.
 
+- Si el avance es **técnico PERO sobre un sistema que YA tiene su Trinity** (un gotcha nuevo,
+  un remedio que faltaba, una corrección a un hecho rancio) → **parchea los manuales
+  existentes**, NO crees 3 nuevos. Antes de escribir, busca: `ls docs/manuales-tecnicos/ |
+  grep -i <sistema>` y `ls docs/ | grep -i <sistema>`. Un Trinity nuevo **orfana el gotcha**:
+  vivirá en un manual que nadie abre, mientras el OPERATIVO viejo —el que sí se consulta al
+  operar— sigue incompleto. Y revisa si la **CLASE** del error ya estaba anotada: si lo está,
+  ACTUALIZA ese bullet con el remedio en vez de añadir uno duplicado (ver
+  `arreglar-la-clase-no-la-instancia`). Caso disparador 2026-09-16: el `mv` local en
+  `~/proton` que se deshace solo — `PROTON_DRIVE_2VIAS` ya existía desde el 09-07 y su §4 ya
+  decía "el motor no detecta renames"; faltaba el `fs move` remoto, que es lo accionable.
+
 Regla: **cero archivos de código/infra cambiados + avance conductual ⇒ NO Trinity.** Declara el
 right-size explícito en el cierre y deja el marker con `"manuals":0`.
+
+Regla 2: **sistema con Trinity previo ⇒ parche, no Trinity nuevo.** Marker con `"manuals":0` y
+`"patched"` apuntando a los archivos tocados.
 
 ## Paso 0 — Recolectar inputs (NO inventar)
 
