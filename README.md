@@ -21,6 +21,7 @@ Versión pública y sanitizada del conjunto de skills de razonamiento. Sin crede
 | `refutar` | Falsación popperiana operacional — mata un claim/cifra antes de construir encima | Karl Popper |
 | `lean` | Elimina muda (desperdicio) en vibecoding + infra: previene acumulación y barre lo acumulado | Lean / TPS (Ohno), Poppendieck |
 | `decision-matrix` | Matriz multicriterio ponderada para elegir entre opciones | Análisis de decisión |
+| `donde-estoy` | Inventario verificado en vivo (4 tiers Kano) + objetivo + matriz de decisión + recomendación con hueco explícito | Kano + análisis de decisión |
 | `clarifica-una-a-una` | Clarifica requisitos con preguntas de opción múltiple UNA A LA VEZ | UX conversacional |
 | `document-progress` | Cierra y documenta una sesión de trabajo en una sola pasada | Bitácora + Trinity de manuales |
 | `iso-42001-aims` | Playbook para aplicar ISO/IEC 42001:2023 (AI Management System) | ISO/IEC 42001:2023 |
