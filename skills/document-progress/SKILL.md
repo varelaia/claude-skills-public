@@ -100,6 +100,16 @@ Antes de escribir nada, reúne y confirma con el usuario lo mínimo:
    salida del primer intento. Antes de escribir un ❌ en tres manuales, pregunta:
    *¿le di al sistema el tiempo que necesita, o solo el que asumí?*
 
+   Caso 2026-09-23 (USB_CLIENTE_UBUNTU_LEXAR), el falso rojo de CACHÉ: `lsblk` leyó
+   FSTYPE vacío a T+0s tras `mkfs.exfat` (udev aún sin re-sondear la partición nueva)
+   y un `diff -qr` imagen↔USB escupió 1009 líneas «No such file or directory» que NO
+   eran diferencias sino symlinks de alternatives colgados, idénticos en ambos lados
+   (0 «differ», 0 «Only in»). Regla gemela de la de arriba: **tras mutar estado del
+   kernel/udev, verifica con la fuente YA asentada (blkid, re-sondeo, log), nunca con
+   el primer read — y antes de aceptar el veredicto de un verificador verboso,
+   CLASIFICA su salida por tipo de línea**; un veredicto ❌ con fondo de ruido
+   estructural sigue siendo un verificador roto.
+
 > Si una cifra viene de otro agente, re-valídala en vivo antes de escribirla
 > (no confíes en cifras heredadas sin re-verificación).
 

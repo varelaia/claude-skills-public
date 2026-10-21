@@ -42,6 +42,8 @@ NUNCA sustituyas el entregable que el usuario pidió por tu propio reframe cuand
 ## Paso 2 — Nombra el experimento crucial y córrelo ANTES de construir
 Escribe explícitamente "esto se refutaría si: ___". Córrelo (query / curl / fuente / búsqueda del contraejemplo). Solo con el resultado en mano procede.
 
+**El experimento debe correr en el CONTEXTO del sujeto del claim** (regla 16-sep, caso VPN lockdown): un ping/curl desde shell/root está EXENTO de firewalls y lockdowns per-uid — su verde no dice nada de la conectividad de una app. Mide desde el uid/contexto real (`dumpsys` per-uid, logs del proceso, agente de la app). Caso real: la refutación P1 del 15-sep declaró "el lockdown no actúa" probando con shell exento; el lockdown llevaba horas bloqueando a Play Store.
+
 ## Paso 3 — Sesgo a refutar
 Arranca asumiendo **REFUTADO**. El claim debe *ganarse* la supervivencia. Un verificador neutral confirma de más; ese sesgo es justo el valor que aportas. Busca activamente el dato/comando que lo tira, no el que lo apoya.
 
