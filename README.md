@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.svg" alt="claude-skills-public — Varela Insights" width="100%"></p>
 <p align="center">
-  <img src="https://img.shields.io/badge/skills-11%20razonamiento-0a0e1a?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/skills-12%20razonamiento-0a0e1a?style=flat-square" alt="Skills">
   <img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT">
   <a href="https://www.varelainsights.com/"><img src="https://img.shields.io/badge/by-Varela%20Insights-6aa0ff?style=flat-square" alt="Varela Insights"></a>
 </p>
@@ -17,6 +17,7 @@ Versión pública y sanitizada del conjunto de skills de razonamiento. Sin crede
 
 | Skill | Para qué sirve | Base |
 |-------|----------------|------|
+| `planteamiento` | Gate de entrada: define el problema y su causa raíz (7 campos + 5-Whys) ANTES de especificar o construir | CPMAI Fase I + 5-Whys |
 | `premortem` | Fracaso prospectivo ANTES de build/ship/deploy — imagina cómo falla antes de que falle | Premortem (Gary Klein) |
 | `refutar` | Falsación popperiana operacional — mata un claim/cifra antes de construir encima | Karl Popper |
 | `lean` | Elimina muda (desperdicio) en vibecoding + infra: previene acumulación y barre lo acumulado | Lean / TPS (Ohno), Poppendieck |
