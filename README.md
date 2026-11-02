@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.svg" alt="claude-skills-public — Varela Insights" width="100%"></p>
 <p align="center">
-  <img src="https://img.shields.io/badge/skills-12%20razonamiento-0a0e1a?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/skills-13%20razonamiento-0a0e1a?style=flat-square" alt="Skills">
   <img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT">
   <a href="https://www.varelainsights.com/"><img src="https://img.shields.io/badge/by-Varela%20Insights-6aa0ff?style=flat-square" alt="Varela Insights"></a>
 </p>
@@ -29,6 +29,7 @@ Versión pública y sanitizada del conjunto de skills de razonamiento. Sin crede
 | `orchestration-autonomy-tiers` | Asigna nivel de autonomía T0/T1/T2 a cada tarea según riesgo | ISO 42001 A.6 + CPMAI |
 | `anti-hype-acronyms-guard` | Gate pre-entrega: caza acrónimos sin métricas y claims sin evidencia en PDFs/propuestas | Mueller alert |
 | `prompt-rewrite` | Reescritura disciplinada de system prompts en producción que fallan | Ingeniería de prompts |
+| `sprint` | Conductor del embudo canónico: lleva UNA tarea del problema al done verificado encadenando todos los gates (planteamiento→spec→pre-flight→premortem→build→e2e→refutar→retro) | CPMAI + ágil |
 
 ---
 
