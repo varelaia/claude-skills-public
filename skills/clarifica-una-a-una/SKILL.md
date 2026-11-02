@@ -100,6 +100,12 @@ Solo lo que cambia el entregable y no puedes inferir con confianza:
 ### Qué NO preguntar
 
 - Cosas que el código, el repo, la memoria o `git` ya responden — léelo tú.
+- **Antes de preguntar specs de algo "nuevo", discovery de lo existente**:
+  `ls ~/.local/bin`, `omarchy commands`, scripts del repo, symlinks. Muchas
+  peticiones de "créalo como comando" en realidad son "el que ya existe" —
+  preguntar specs de algo ya construido quema el ritmo (caso 2026-09-07:
+  aclarar red/contraseña de un comando wifi nuevo cuando `hotspot up` ya
+  resolvía lo pedido).
 - Convenciones ya establecidas en el proyecto (naming, timezone, puertos,
   forma de leer tokens). Aplícalas, no preguntes.
 - Detalles triviales con un default obvio — elígelo y menciónalo de pasada.

@@ -51,8 +51,28 @@ evidencia dura (Paso 0.4) PRIMERO y mira **qué cambió en disco**:
   (refutar+premortem mataron todo lo propuesto) — forzar Trinity habría sido la basura que el
   hilo entero combatió. Right-size = memory + puntero + (si reveló gotcha) patch de skill + marker.
 
+- Si el avance es **técnico PERO sobre un sistema que YA tiene su Trinity** (un gotcha nuevo,
+  un remedio que faltaba, una corrección a un hecho rancio) → **parchea los manuales
+  existentes**, NO crees 3 nuevos. Antes de escribir, busca: `ls docs/manuales-tecnicos/ |
+  grep -i <sistema>` y `ls docs/ | grep -i <sistema>`. **Un hit del `grep` NO prueba que sea
+  el Trinity de tu sistema — lee el encabezado antes de concluir** (`head -3` del manual, o
+  `grep -rln "<marca/hostname/path real>"`). Falso positivo pagado 2026-09-21: grep por
+  "perifer" devolvió `CLASE_IA_NIVEL0_PERIFERICOS_SSH`, que suena al Trinity de los
+  periféricos del equipo pero es de cámara/mic/bocinas de **otro** server; el teclado no
+  tenía Trinity y por poco lo trato como parche. El nombre del archivo es una pista, el
+  encabezado es la evidencia. Un Trinity nuevo **orfana el gotcha**:
+  vivirá en un manual que nadie abre, mientras el OPERATIVO viejo —el que sí se consulta al
+  operar— sigue incompleto. Y revisa si la **CLASE** del error ya estaba anotada: si lo está,
+  ACTUALIZA ese bullet con el remedio en vez de añadir uno duplicado (ver
+  `arreglar-la-clase-no-la-instancia`). Caso disparador 2026-09-16: el `mv` local en
+  `~/proton` que se deshace solo — `PROTON_DRIVE_2VIAS` ya existía desde el 09-07 y su §4 ya
+  decía "el motor no detecta renames"; faltaba el `fs move` remoto, que es lo accionable.
+
 Regla: **cero archivos de código/infra cambiados + avance conductual ⇒ NO Trinity.** Declara el
 right-size explícito en el cierre y deja el marker con `"manuals":0`.
+
+Regla 2: **sistema con Trinity previo ⇒ parche, no Trinity nuevo.** Marker con `"manuals":0` y
+`"patched"` apuntando a los archivos tocados.
 
 ## Paso 0 — Recolectar inputs (NO inventar)
 
@@ -193,6 +213,30 @@ git -C "$REPO" log --oneline -1
 
 Deben existir los 3 manuales, aparecer el puntero en MEMORY.md, y verse el commit.
 Si falta cualquiera → vuelve al paso correspondiente.
+
+### ⚠ El gate de arriba verifica que el DOC EXISTA, no que DIGA LA VERDAD
+
+Ese `ls` + `grep` pasa igual si el manual afirma un estado que nunca quedó. **Antes de cerrar,
+re-lee del artefacto REAL cada estado que el manual declare configurado** — interruptores,
+banderas, ajustes de una app, valores de `settings`, unidades habilitadas:
+
+```bash
+# ejemplos del patrón: leer de VUELTA, del sistema, lo que el manual afirma
+adb shell settings get secure <clave>          # no "lo puse", sino lo que quedó
+systemctl --user is-enabled <unidad>
+grep -n '<clave>' <archivo-de-config-real>
+# para una app sin CLI: captura de pantalla del interruptor, no el recuerdo de haberlo tocado
+```
+
+**Un ajuste documentado NO es un ajuste verificado.** Caso disparador 2026-09-23: el manual
+`OBTAINIUM_APPS_SIN_TIENDA` del 09-18 decía *"se activó `Reconcile version string with version
+detected from OS` y dejó de avisar en falso"*. Cinco días después el interruptor estaba
+**apagado** y la app llevaba ese tiempo dando un aviso falso. Lo escrito era la **intención**,
+no el **resultado**, y el gate no lo detectó porque el archivo sí existía.
+
+Regla de redacción que se deriva: si no re-leíste el estado, **no escribas "quedó puesto"** —
+escribe "se activó, **sin verificación posterior**" y déjalo en la deuda. Ver
+[[leer-gotchas-antes-de-operar]] formas 3 y 4.
 
 ## Paso 5 — Marcar la ejecución (para no duplicar al cerrar la sesión)
 

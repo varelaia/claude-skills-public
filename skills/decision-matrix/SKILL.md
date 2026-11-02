@@ -72,6 +72,12 @@ cambios (otro criterio, otro peso, otra opción), incorpóralos. **No pases al P
 sin confirmación** — los pesos cambian el resultado y son la decisión más
 subjetiva de todo el ejercicio; merece su luz verde.
 
+⚠ **Si ofreces perfiles de peso ALTERNATIVOS para que el usuario elija** (p. ej. en un
+widget de opciones), **cada perfil debe sumar 100 por separado** — recalcula el set
+completo, no sólo los dos criterios que mueves. Error pagado el 2026-09-17: ofrecí "sube
+raíz a 35 % y baja riesgo a 25 %" dejando los otros tres intactos ⇒ ese perfil sumaba
+**110**. Si el usuario lo hubiera elegido, la matriz habría salido con pesos inválidos.
+
 Si el usuario ya te dio criterios/pesos/opciones explícitos, no los re-preguntes:
 confírmalos en una línea y sigue.
 

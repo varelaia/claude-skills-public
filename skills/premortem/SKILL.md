@@ -93,6 +93,17 @@ uno: ¿aplica aquí? ¿cómo nos enteraríamos? (la detección es lo crítico �
 | 10 | **Deploy que no aplicó** (mount stale, inode, cache) | host muestra lo nuevo, el container/usuario ve lo viejo |
 | 11 | **Daño al vecino** (blast radius) | el cambio tumba otro servicio (restart global, OOM a vecinos, puerto) |
 | 12 | **Violación de infra/política** | SSH bidireccional (Bastion), servicio interno en VPS de cliente, naming predecible |
+| 13 | **Un servicio de fondo transforma la entrada o la salida** (expansor de texto, autocorrector, IME, gestor de portapapeles, formateador al guardar) | lo que el usuario teclea NO es lo que tu programa recibe. Síntoma típico: falla **solo en el camino feliz** (el correcto es el que el servicio reconoce) y es irreproducible en pruebas automatizadas, porque la inyección sintética no pasa por esa capa |
+
+La #13 se paga especialmente en **herramientas que piden teclear justo lo que otra
+herramienta vigila**. Caso real (2026-09-23): un juego para memorizar los atajos de un
+expansor de texto pedía teclear **exactamente sus triggers**; al ACERTAR, el expansor
+reemplazaba la palabra y reinyectaba el ENTER, que caía en el `input()` siguiente y
+saltaba de pregunta. El usuario lo describió como *"si la escribo bien, no se detiene"*.
+Ninguna prueba lo habría cazado: las pruebas alimentan `stdin`, no el teclado físico.
+**Pregunta de premortem:** ¿qué hay entre el teclado (o el portapapeles, o el editor) y mi
+programa? Si algo transforma, el arreglo es **desactivarlo mientras el programa corre**,
+no parchear el síntoma.
 
 Añade los específicos del dominio que estés tocando (este catálogo es piso, no techo).
 
@@ -128,6 +139,33 @@ Para cada mitigación, nombra: **qué control, de qué altura, y si ya existe** 
   ese solo hecho es un hallazgo del premortem (la operación es demasiado irreversible para su riesgo).
 - **Go / No-Go:** ¿backups verificados? ¿rollback probado/plausible? ¿controles P1 en su altura
   correcta ANTES de proceder? ¿detección en su lugar para las fallas silenciosas? Solo entonces: Go.
+
+### GO-CON-CONDICIONES obliga a un segundo paso (si no, el badge es decorativo)
+
+Declarar ⚠️ **GO-CON-CONDICIONES** no es un permiso: es una **deuda con vencimiento**. El
+modo de falla es humano y silencioso — enuncias 5 mitigaciones P1, te pones a construir, y
+**nadie vuelve a mirar la lista**. El premortem entonces no evitó nada: solo dejó escrito,
+con mucho detalle, aquello contra lo que te estrellaste.
+
+Al **entregar** (no al planear), cierra la lista P1 explícitamente, una línea por P1:
+
+```
+P1 #2 poda falsa  → CERRADO   (default corregido: gratis.txt nace comentado)
+P1 #3 dirección   → ABIERTO   aceptado por <quién>, va al backlog como <item>
+```
+
+Reglas:
+- **Todo P1 sale CERRADO o ABIERTO-Y-ACEPTADO con dueño.** No hay tercera opción; un P1 que
+  no vuelves a nombrar es un riesgo aceptado **en silencio y sin que nadie lo acepte**.
+- Los **ABIERTOS van al entregable y al mensaje de commit**, no solo a tu cabeza.
+- Si un P1 se cerró **por accidente** (lo cazaste construyendo, no por la lista), dilo: es
+  señal de que el gate no está funcionando, aunque el resultado haya salido bien.
+
+Caso que lo motivó (2026-09-22, emojis): premortem con 5 P1. El #6 (privacidad del watcher)
+se cerró por diseño; el #2 (el oráculo de la poda daba por "gratis" palabras inglesas a
+alguien que escribe en español) **se cazó de casualidad al probar contra datos reales**, no
+por la lista; y el #3 (*"el quiz entrena la dirección equivocada"*) **se entregó abierto sin
+decirlo** — salió a la luz recién cuando el usuario preguntó "¿habría un nivel 2?".
 
 ## Output — preséntalo SIEMPRE así (escaneable, no un volcado)
 El veredicto va primero. Cada modo de falla P1/P2 en su fila. Las mitigaciones con altura y dueño.
@@ -172,6 +210,8 @@ El veredicto va primero. Cada modo de falla P1/P2 en su fila. Las mitigaciones c
 - Pusiste un hook para vigilar un juicio (c), o dejaste a disciplina una señal limpia (a).
 - No puedes enunciar el rollback → procediste igual.
 - La "detección" de una falla silenciosa quedó en blanco → la diste por improbable sin base.
+- Declaraste **GO-CON-CONDICIONES** y entregaste sin volver a la lista P1: ¿cuáles quedaron
+  abiertos? Si no puedes contestarlo de memoria, el badge fue decorativo.
 
 ## Rationalizaciones (de baselines reales)
 | Excusa | Realidad |
