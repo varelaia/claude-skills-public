@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.svg" alt="claude-skills-public — Varela Insights" width="100%"></p>
 <p align="center">
-  <img src="https://img.shields.io/badge/skills-13%20razonamiento-0a0e1a?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/skills-17%20razonamiento-0a0e1a?style=flat-square" alt="Skills">
   <img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT">
   <a href="https://www.varelainsights.com/"><img src="https://img.shields.io/badge/by-Varela%20Insights-6aa0ff?style=flat-square" alt="Varela Insights"></a>
 </p>
@@ -17,6 +17,7 @@ Versión pública y sanitizada del conjunto de skills de razonamiento. Sin crede
 
 | Skill | Para qué sirve | Base |
 |-------|----------------|------|
+| `agotar-antes-de-negar` | Antes de declarar que algo "no existe / no se puede": agota los métodos de prueba restantes, sobre todo si el usuario disputa la negación | Epistemología operativa |
 | `planteamiento` | Gate de entrada: define el problema y su causa raíz (7 campos + 5-Whys) ANTES de especificar o construir | CPMAI Fase I + 5-Whys |
 | `premortem` | Fracaso prospectivo ANTES de build/ship/deploy — imagina cómo falla antes de que falle | Premortem (Gary Klein) |
 | `refutar` | Falsación popperiana operacional — mata un claim/cifra antes de construir encima | Karl Popper |
@@ -30,6 +31,9 @@ Versión pública y sanitizada del conjunto de skills de razonamiento. Sin crede
 | `anti-hype-acronyms-guard` | Gate pre-entrega: caza acrónimos sin métricas y claims sin evidencia en PDFs/propuestas | Mueller alert |
 | `prompt-rewrite` | Reescritura disciplinada de system prompts en producción que fallan | Ingeniería de prompts |
 | `sprint` | Conductor del embudo canónico: lleva UNA tarea del problema al done verificado encadenando todos los gates (planteamiento→spec→pre-flight→premortem→build→e2e→refutar→retro) | CPMAI + ágil |
+| `spec` | Gate SPEC: 7 campos (qué/por qué/dónde/cómo/casos borde/verificación/rollback) antes de escribir código; spec-lite por default, SDD pleno solo cuando el riesgo lo paga | Spec-driven development |
+| `pre-flight` | Gate PRE-FLIGHT: verifica EN VIVO ubicación, tráfico, propiedad, método de deploy, rollback y radio de daño antes de tocar nada | Checklist de aviación |
+| `e2e` | Gate de SALIDA (Definition of Done): verificación end-to-end por tipo de tarea que toca el truth-maker, no un proxy, con control negativo | Anti-Gettier (Sosa/Goldman) |
 
 ---
 
